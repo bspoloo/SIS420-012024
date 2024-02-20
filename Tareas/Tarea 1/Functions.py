@@ -1,10 +1,11 @@
 #Calculadora de matrices
+import numpy as np;
 def printMenu():
     print("======================================================================");
     print("Sum:                +");
     print("Rest:               -");
-    print("multiplication:     *");
-    print("show resul:          R")
+    print("Multiplication:     *");
+    print("Show result:          R")
     print("======================================================================");
 
 
@@ -17,9 +18,9 @@ def isValid(n):
 
 def makeArray(rows, columns):
     array_rows = []
-    for i in range(rows):
+    for i in range(0,rows):
         array_columns = []
-        for j in range(columns):
+        for j in range(0,columns):
             data = int(input("Enter the data for position ({},{}) : ".format(i, j)))
             array_columns.append(data)
         array_rows.append(array_columns)
@@ -29,13 +30,19 @@ def calculate(array, option):
     new_array =[];
     if option == "+":
         new_array = makeArray(rows, columns);
-        array += new_array;
+        create_array =np.array(new_array, int);
+        
+        print(create_array);
+        array += create_array;
+        print(array);
     elif option == "-":
         new_array = makeArray(rows, columns);
-        array -= new_array;
+        create_array =np.array(new_array, int);
+        array -= create_array;
     elif option == "*":
         new_array = makeArray(rows, columns);
-        array.dot(new_array);
+        create_array =np.array(new_array, int);
+        array.dot(create_array);
     return array;
 
 
@@ -53,12 +60,10 @@ init_array = makeArray(rows, columns);
 
 userInput = "";
 
-print(init_array);
-
 while not userInput == "R":
-    userInput =input("Select an operation: ");
-    init_array = calculate(init_array, userInput);
-
+    printMenu()
+    userInput = input("Select an operation: ")
+    init_array = calculate(init_array, userInput)
 
 
 print("Your array using this calculator is: ");
