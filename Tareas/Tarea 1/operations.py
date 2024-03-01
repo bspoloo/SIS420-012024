@@ -1,6 +1,6 @@
 import numpy as np;
 
-#creation of the array mxm 1
+#creation of the array MxM 1
 array_1 = np.array([
     [1,2,3,4],
     [5,5,7,8],
