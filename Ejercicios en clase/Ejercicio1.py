@@ -17,3 +17,4 @@ def findAandB(min, max, feacture, label):
 
 print("the result is: ");
 print(findAandB(-1000,1000,2104,460));
+#como estas
