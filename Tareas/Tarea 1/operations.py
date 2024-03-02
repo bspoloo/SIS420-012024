@@ -1,3 +1,4 @@
+#importamos el numpy
 import numpy as np;
 
 #creation of the array MxM 1
