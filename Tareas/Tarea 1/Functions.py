@@ -1,4 +1,5 @@
 #Calculadora de matrices
+#Sirve para calcular las matrices
 import numpy as np;
 def printMenu():
     print("======================================================================");
