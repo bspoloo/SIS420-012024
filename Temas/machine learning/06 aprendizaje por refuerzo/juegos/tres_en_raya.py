@@ -1,3 +1,4 @@
+#Para ejecutar el programa, ejecute el siguiente comando: python tres_en_raya.py
 try:
     import sys
     import pygame
