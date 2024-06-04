@@ -6,7 +6,7 @@ from tresenraya.objects import Player, Agent, Board
 
 
 class GameScene(SceneBase):
-    def __init__(self, agente="./tresenraya/assets/agente.pickle"):
+    def __init__(self, agente="./tresenraya/assets/agente4x4.pickle"):
         super().__init__()
         self._game_over = False
 
@@ -14,12 +14,12 @@ class GameScene(SceneBase):
         screen = pygame.display.get_surface()
         size = screen.get_size()
         rect_width, rect_height = 5, 5
-        for i in range(2):
+        for i in range(3):  # Change here
             rect = pygame.Rect(
-                (i+1)*(size[0] / 3) - 0.5*rect_width, 0, rect_width, size[1])
+                (i+1)*(size[0] / 4) - 0.5*rect_width, 0, rect_width, size[1])
             pygame.draw.rect(self.background, (255, 255, 255), rect)
             rect = pygame.Rect(
-                0, (i+1)*(size[1] / 3) - 0.5*rect_height, size[0], rect_height)
+                0, (i+1)*(size[1] / 4) - 0.5*rect_height, size[0], rect_height)
             pygame.draw.rect(self.background, (255, 255, 255), rect)
         
         self.initial_background = self.background
@@ -29,7 +29,7 @@ class GameScene(SceneBase):
         # objects
         self.player = Player()
         self.agent = Agent(agente)
-        self.board = Board()
+        self.board = Board()  # Change here
 
     def start(self):
         self._game_over = False
@@ -37,8 +37,8 @@ class GameScene(SceneBase):
         self.background = self.initial_background.copy()
 
     def grid2pixels(self, x, y):
-        x = (x*2 + 1)*(self.size[0]/6)
-        y = (y*2 + 1)*(self.size[1]/6)
+        x = (x*2 + 1)*(self.size[0]/8)  # Change here
+        y = (y*2 + 1)*(self.size[1]/8)  # Change here
         return x, y
 
     def process_input(self, scene_manager):
@@ -52,8 +52,8 @@ class GameScene(SceneBase):
             # click en la cuadrícula
             elif event.type == pygame.MOUSEBUTTONDOWN and not self._game_over:
                 # coordenadas del click
-                x = int(event.pos[0] // (self.size[0] / 3))
-                y = int(event.pos[1] // (self.size[1] / 3))
+                x = int(event.pos[0] // (self.size[0] / 4))  # Change here
+                y = int(event.pos[1] // (self.size[1] / 4))  # Change here
                 # movimiento jugador
                 if (y, x) in self.board.valid_moves():
                     self.board.update(self.player.symbol, y, x)
@@ -102,4 +102,3 @@ class GameScene(SceneBase):
             centerx=self.background.get_width()/2,
             centery=self.background.get_height()/2)
         self.background.blit(text, textpos)
-

@@ -1,3 +1,8 @@
+#El agente tiene una función de valor (cargada desde un archivo) que asigna a cada estado posible del tablero un valor basado en la recompensa esperada. 
+# Durante la fase de explotación, el agente utiliza esta función de valor para seleccionar la acción que cree que le dará la mayor recompensa.
+# En el método move, el agente examina todos los movimientos válidos que puede hacer en el tablero actual. Para cada movimiento, 
+# calcula el valor del estado del tablero que resultaría de ese movimiento. Luego, elige el movimiento que resulta en el estado con el valor más alto.
+
 import pickle
 
 class Agent():
@@ -13,7 +18,7 @@ class Agent():
         for row, col in valid_moves:
             next_board = board.state.copy()
             next_board[row, col] = self.symbol
-            next_state = str(next_board.reshape(3*3))
+            next_state = str(next_board.reshape(4*4))
             value = 0 if self.value_function.get(next_state) is None else self.value_function.get(next_state)
             if value >= max_value:
                 max_value = value
